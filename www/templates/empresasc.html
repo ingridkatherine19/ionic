@@ -1,0 +1,23 @@
+<ion-view view-title="Empresas Colaboradoras" class="">
+    <div class="bar bar-subheader item-input-inset bar-color">
+      <label class="item-input-wrapper" style="margin-left: 3%;margin-right: 3%;">
+        <i class="icon ion-ios-search placeholder-icon"></i>
+        <input type="search" placeholder="Search" ng-model="filtro">
+      </label>
+    </div>
+        
+    <ion-content class="has-subheader has-footer">
+
+      <div class="list card stable-bg" ng-repeat="c in colaboradoras | filter:filtro" >
+          <div class="item item-avatar">
+              <img src="img/material4.jpg">
+              <h2>{{c.empresa}}</h2>
+              <p>{{c.empresaTipo}}</p>
+              <p>{{c.tipo}}</p>
+          </div>
+      </div>
+      
+      
+    </ion-content>
+    
+</ion-view>

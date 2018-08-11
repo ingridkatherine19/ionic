@@ -1,0 +1,21 @@
+<ion-view view-title="Hoteles" class="">
+    <div class="bar bar-subheader item-input-inset bar-color">
+      <label class="item-input-wrapper" style="margin-left: 3%;margin-right: 3%;">
+        <i class="icon ion-ios-search placeholder-icon"></i>
+        <input type="search" placeholder="Search" ng-model="filtro">
+      </label>
+    </div>
+        
+    <ion-content class="has-subheader has-footer">
+     <div class="list" >
+         <a class="item item-avatar item-icon-right" ng-repeat="hotel in hoteles | filter:filtro">
+            <img src="img/material4.jpg">
+            <h2>{{hotel.nombre}} </h2>
+            <p>{{hotel.tipoC}}</p>
+            <p>{{hotel.direccion}}</p>
+            <i class="icon ion-ios-location" style="font-size:  20px;color: #ff9c3e;" ng-click="comollegar2(hotel)"></i>
+          </a>
+      </div>
+    </ion-content>
+    
+</ion-view>

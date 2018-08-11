@@ -1,0 +1,290 @@
+<ion-view view-title="Regristro" style="background-image:url(img/background.jpg);" >
+
+<ion-content class="has-footer">
+
+    <form name='formEmpresa' ng-if="tipo == 1">
+      <!--PARTE 1-->
+
+        <div class="list card" ng-if="opcion == 1">
+          <div class="item item-body" style="padding-top: 0px; padding-bottom: 0px;">
+            <h2 style="color:#aaaaaa">Datos de la empresa</h2>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Nombre</span>
+                <input type="text" ng-model="empresa.nombre" placeholder="Nombre" required>
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Nit</span>
+                <input type="number" ng-model="empresa.nit" placeholder="Nit" required>
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Email</span>
+                <input type="email" ng-model="empresa.email" placeholder="Email" required>
+              </label>
+              <select class="item item-input item-floating-label" style="height: 75px" ng-model="empresa.sector" required>
+                <span class="input-label">Tipo</span>
+                    <option ng-selected="sector==0" value="0">Microempresa</option>
+                    <option value="1">Pequeña Empresa</option>
+                    <option value="2">Mediana Empresa</option>
+                    <option value="3">Gran Empresa</option>
+              </select>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Gerente</span>
+                <input type="text" ng-model="empresa.gerente" placeholder="Gerente" required>
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Telefono</span>
+                <input type="number" ng-model="empresa.telefono1" placeholder="Teléfono" required>
+              </label>
+          </div>
+          <br>
+        </div>
+     <!--PARTE 2-->
+        <div class="list card" ng-if="opcion == 2">
+          <div class="item item-body" style="padding-top: 0px; padding-bottom: 0px;">
+              <select class="item item-input item-floating-label" ng-model="empresa.departamento"  ng-change="buscarCiudad(departamento)" style="height: 75px" required>
+                 <option value="{{departamento.idDepartamento}}" ng-repeat="departamento in departamentos" >{{departamento.nombre}}</option>
+              </select>
+              <select ng-model="empresa.ciudad" class="item item-input item-floating-label" style="height: 75px" required>
+                <option value="{{ciudad}}" ng-repeat="ciudad in ciudades">{{ciudad.nombre}}</option>
+              </select>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Dirección</span>
+                <input type="text" ng-model="empresa.direccion" placeholder="Dirección" required>
+              </label>
+            <br>
+              <button ng-click="deleteMarkers();" type="button" class="positionButton btn botonModal btn-flat margin "><i class="fa fa-close"></i>Eliminar Marker</button>
+              <div id="map3" style="width: 100% !important;height: 220px !important; position: relative !important;" ng-init="initMap()">
+              </div>
+          </div>
+        </div>
+      <!--PARTE 3-->
+        <div class="list card" ng-if="opcion == 3" >
+          <div class="item item-body" style="padding-top: 0px; padding-bottom: 0px; padding-bottom: 15%;">
+              <h2 style="color:#aaaaaa">Datos de la cuenta</h2>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Nombre</span>
+                <input type="text" ng-model="usuario.nombre" placeholder="Nombre" required>
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Apellido</span>
+                <input type="text" ng-model="usuario.apellido" placeholder="Apellido" required>
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Correo</span>
+                <input type="email" ng-model="usuario.correo" placeholder="Correo" required>
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Contraseña</span>
+                <input type="password" ng-model="usuario.contrasena" placeholder="Contraseña" required>
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Confirmar Contraseña</span>
+                <input type="password" ng-model="usuario.contrasena2" placeholder="Contraseña" required>
+              </label>
+          </div>
+        </div>
+    </form>
+    <form name='formAgrupacion' ng-if="tipo == 2">
+      <!--PARTE 1-->
+        <div class="list card" ng-if="opcion == 1">
+          <div class="item item-body" style="padding-top: 0px; padding-bottom: 0px;">
+            <h2 style="color:#aaaaaa">Datos de la Agrupación</h2>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Nombre</span>
+                <input type="text" ng-model="agrupacion.nombre" placeholder="Nombre">
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Nit</span>
+                <input type="number" ng-model="agrupacion.nit" placeholder="Nit">
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Representante</span>
+                <input type="text" ng-model="agrupacion.representante" placeholder="Representante">
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Email</span>
+                <input type="email" ng-model="agrupacion.email" placeholder="Email">
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Telefono</span>
+                <input type="number" ng-model="agrupacion.telefono" placeholder="Teléfono">
+              </label>
+              <select class="item item-input item-floating-label" ng-model="agrupacion.genero"  style="height: 75px">
+                 <option value="{{genero}}" ng-repeat="g in genero" >{{g.nombre}}</option>
+              </select>
+          </div>
+          <br>
+        </div>
+     <!--PARTE 2-->
+        <div class="list card" ng-if="opcion == 2">
+          <div class="item item-body" style="padding-top: 0px; padding-bottom: 0px;">
+              <select class="item item-input item-floating-label" ng-model="agrupacion.departamento"  ng-change="buscarCiudad(departamento)" style="height: 75px">
+                 <option value="{{departamento.idDepartamento}}" ng-repeat="departamento in departamentos" >{{departamento.nombre}}</option>
+              </select>
+              <select ng-model="agrupacion.ciudad" class="item item-input item-floating-label" style="height: 75px">
+                <option value="{{ciudad}}" ng-repeat="ciudad in ciudades">{{ciudad.nombre}}</option>
+              </select>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Dirección</span>
+                <input type="text" ng-model="agrupacion.direccion" placeholder="Dirección">
+              </label>
+            <br>
+              <button ng-click="deleteMarkers();" type="button" class="positionButton btn botonModal btn-flat margin "><i class="fa fa-close"></i>Eliminar Marker</button>
+              <div id="map3" style="width: 100% !important;height: 220px !important; position: relative !important;" ng-init="initMap()">
+              </div>
+          </div>
+        </div>
+      <!--PARTE 3-->
+        <div class="list card" ng-if="opcion == 3" >
+          <div class="item item-body" style="padding-top: 0px; padding-bottom: 0px; padding-bottom: 15%;">
+              <h2 style="color:#aaaaaa">Datos de la cuenta</h2>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Nombre</span>
+                <input type="text" ng-model="usuario.nombre" placeholder="Nombre">
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Apellido</span>
+                <input type="text" ng-model="usuario.apellido" placeholder="Apellido">
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Correo</span>
+                <input type="email" ng-model="usuario.correo" placeholder="Correo">
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Contraseña</span>
+                <input type="password" ng-model="usuario.contrasena" placeholder="Contraseña">
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Confirmar Contraseña</span>
+                <input type="password" ng-model="usuario.contrasena2" placeholder="Contraseña">
+              </label>
+              
+          </div>
+        </div>
+    </form>
+    <form name='formParticipante' ng-if="tipo == 3">
+      <!--PARTE 1-->
+        <div class="list card" ng-if="opcion == 1">
+          <div class="item item-body" style="padding-top: 0px; padding-bottom: 0px;">
+            <h2 style="color:#aaaaaa">Datos del Participante</h2>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Nombre</span>
+                <input type="text" ng-model="participante.nombre" placeholder="Nombre">
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Cédula</span>
+                <input type="number" ng-model="participante.cedula" placeholder="Cedula">
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Edad</span>
+                <input type="number" ng-model="participante.edad" placeholder="Edad">
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Teléfono</span>
+                <input type="number" ng-model="participante.telefono" placeholder="Telefono">
+              </label>
+              <select class="item item-input item-floating-label" ng-model="participante.sexo"  style="height: 75px">
+                 <option ng-selected="sexo==0" value="0">Femenino</option>
+                 <option value="1">Masculino</option>
+              </select>
+              <select class="item item-input item-floating-label" ng-model="participante.tipo"  style="height: 75px">
+                 <option ng-selected="tipoparticipante==0" value="0">Natural</option>
+                 <option value="1">Jurídico</option>
+              </select>
+          </div>
+          <br>
+        </div>
+     <!--PARTE 2-->
+        <div class="list card" ng-if="opcion == 2">
+          <div class="item item-body" style="padding-top: 0px; padding-bottom: 0px;">
+              <select class="item item-input item-floating-label" ng-model="participante.departamento"  ng-change="buscarCiudad(departamento)" style="height: 75px">
+                 <option value="{{departamento.idDepartamento}}" ng-repeat="departamento in departamentos" >{{departamento.nombre}}</option>
+              </select>
+              <select ng-model="participante.ciudad" class="item item-input item-floating-label" style="height: 75px">
+                <option value="{{ciudad}}" ng-repeat="ciudad in ciudades">{{ciudad.nombre}}</option>
+              </select>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Dirección</span>
+                <input type="text" ng-model="participante.direccion" placeholder="Dirección">
+              </label>
+            <br>
+
+               <button ng-click="deleteMarkers();" type="button" class=" positionButton btn botonModal btn-flat"><i class="fa fa-close"></i>Eliminar Marker</button>
+              <div id="map3" style="width: 100% !important;height: 220px !important; position: relative !important;" ng-init="initMap()">
+              </div>
+           
+
+          </div>
+        </div>
+      <!--PARTE 3-->
+        <div class="list card" ng-if="opcion == 3" >
+          <div class="item item-body" style="padding-top: 0px; padding-bottom: 0px; padding-bottom: 15%;">
+              <h2 style="color:#aaaaaa">Datos de la cuenta</h2>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Nombre</span>
+                <input type="text" ng-model="usuario.nombre" placeholder="Nombre">
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Apellido</span>
+                <input type="text" ng-model="usuario.apellido" placeholder="Apellido">
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Correo</span>
+                <input type="email" ng-model="usuario.correo" placeholder="Correo">
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Contraseña</span>
+                <input type="password" ng-model="usuario.contrasena" placeholder="Contraseña">
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Confirmar Contraseña</span>
+                <input type="password" ng-model="usuario.contrasena2" placeholder="Contraseña">
+              </label>
+          </div>
+        </div>
+    </form>
+    <form name='formParticipante' ng-if="tipo == 4">
+        <div class="list card" >
+          <div class="item item-body" style="padding-top: 0px; padding-bottom: 0px; padding-bottom: 15%;">
+              <h2 style="color:#aaaaaa">Datos de la cuenta</h2>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Nombre</span>
+                <input type="text" ng-model="usuario.nombre" placeholder="Nombre">
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Apellido</span>
+                <input type="text" ng-model="usuario.apellido" placeholder="Apellido">
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Cedula</span>
+                <input type="number" ng-model="usuario.cedula" placeholder="Cedula">
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Correo</span>
+                <input type="email" ng-model="usuario.correo" placeholder="Correo">
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Contraseña</span>
+                <input type="password" ng-model="usuario.contrasena" placeholder="Contraseña">
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Confirmar Contraseña</span>
+                <input type="password" ng-model="usuario.contrasena2" placeholder="Contraseña">
+              </label>
+              <br>
+          </div>
+        </div>
+    </form>
+  </ion-content>
+</ion-view>
+<div class="bar bar-footer" style="background-color:#ff9c3e;" ng-if="tipo != 4">
+<div class="title" style="color:white"  ng-click="actionSheet()">Cambiar Usuario</div>
+  <button class="button button-clear icon-left ion-ios-arrow-left {{left}}" style="background-color:#ff9c3e; color:white" ng-click="cambioOpcionArrow(0);"></button>
+  <button ng-if="opcion != 3" class="button button-clear icon-right ion-ios-arrow-right {{right}}" ng-click="cambioOpcionArrow(1);" style="background-color:#ff9c3e; color:white"></button>
+
+  <button ng-if="opcion == 3" class="button button-clear icon-right ion-android-done" ng-click="guardar();" style="background-color:#ff9c3e; color:white"></button>
+</div>
+<div class="bar bar-footer " style="background-color:#ff9c3e;" ng-if="tipo == 4">
+  <div class="title" style="color:white"  ng-click="actionSheet()">Cambiar Usuario</div>
+  <button class="button button-clear icon-right ion-android-done pull-right" ng-click="guardar();" style="background-color:#ff9c3e; color:white"></button>
+</div>

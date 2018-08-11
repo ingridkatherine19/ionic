@@ -1,0 +1,213 @@
+<ion-view view-title="Perfil {{titulo}}" class="" >
+  <ion-content >
+    <img src="img/logo.png" class="iconLogin" style=" width: 20% !important;
+     position: relative !important;
+     left: 41% !important;
+     top: 25px !important;
+     z-index: 1000 !important;
+     color: #FFFFFF !important;
+     font-weight: bold !important; ">
+        <div class="list card " style="background-color: transparent !important; margin:0px">
+            <div class="item" style="padding-bottom: 0px" >
+               <h4 ng-if="empresa[0]" class="text-center" style="font-size: x-large; ">{{empresa[0].nombre}}</h4>
+               <h4 ng-if="participante[0]" class="text-center" style="font-size: x-large; ">{{participante[0].nombre}}</h4>
+               <h4 ng-if="agrupacion[0]" class="text-center" style="font-size: x-large; ">{{agrupacion[0].nombre}}</h4>
+               <p ng-if="empresa[0]" class="text-center ">{{empresa[0].nit}}</p>
+               <p ng-if="agrupacion[0]" class="text-center ">{{agrupacion[0].nit}}</p>
+               <p ng-if="participante[0]" class="text-center ">{{participante[0].cedula}}</p>
+            </div>
+            <div class="item item-body" style="padding-top: 0px; padding-bottom: 2%" >
+            <div class="row">
+              <div class="col text-center ">
+                <button class="button button-fab button-dark icon ion-social-facebook " data-ink-color="#ff0000" data-ink-opacity=".8"></button>
+              </div>
+              <div class="col text-center">
+                <button class="button button-fab icon button-dark ion-social-instagram " data-ink-color="#ff0000" data-ink-opacity=".8"></button>
+              </div>
+              <div class="col text-center">
+                <button class="button button-fab button-dark icon ion-social-twitter " data-ink-color="#ff0000" data-ink-opacity=".8"></button>
+              </div>
+             </div>
+            </div>
+            <div class="item tabs tabs-secondary tabs-icon-left" >
+                <a class="tab-item" style="opacity: 1" ng-click="cambiarVista(0)">
+                    <i class="icon ion-person" ></i> 
+                </a>
+                <a class="tab-item " style="opacity: 1 ; border-left: 1px solid #b2b2b2 ; border-right: 1px solid #b2b2b2" ng-click="cambiarVista(1)">
+                    <i class="icon ion-trophy"></i> 
+                </a>
+                <a class="tab-item" style="opacity: 1" ng-click="cambiarVista(2)">
+                    <i class="icon ion-ios-star"></i> 
+                </a>
+            </div>
+        </div>
+    <!--PERFIL-->
+    <div ng-show="vista == 0">
+     <h4 class="border-top text-center" style="margin-left: 2% ; font-size: large"">Información</h4>
+        <div class="list " ng-if="empresa[0]">
+          <a class="item item-icon-left">
+              <i class="icon ion-ios-world" style="color: #6f6b6b"></i> {{empresa[0].nombreDepartamento}}
+          </a>
+          <a class="item item-icon-left">
+              <i class="icon ion-map" style="color: #6f6b6b"></i> {{empresa[0].nombreCiudad}}
+          </a>
+          <a class="item item-icon-left">
+              <i class="icon ion-ios-location" style="color: #6f6b6b"></i> {{empresa[0].direccion}}
+          </a>
+          <a class="item item-icon-left">
+              <i class="icon ion-person" style="color: #6f6b6b"></i>   {{empresa[0].gerente}}
+          </a>
+          <a class="item item-icon-left">
+              <i class="icon ion-person-stalker" style="color: #6f6b6b"></i> N° Empleados
+              <span class="badge badge-balanced">{{empresa[0].nempleados}}</span>
+          </a>
+           <a class="item item-icon-left">
+              <i class="icon ion-email" style="color: #6f6b6b"></i> N° {{empresa[0].correo}}
+          </a>
+           <a class="item item-icon-left">
+              <i class="icon ion-android-call" style="color: #6f6b6b"></i> N° {{empresa[0].telefono1}}
+          </a>
+        </div> 
+        <div class="list" ng-if="agrupacion[0]">
+          <a class="item item-icon-left">
+              <i class="icon ion-ios-world" style="color: #6f6b6b"></i> {{agrupacion[0].nombreDepartamento}}
+          </a>
+          <a class="item item-icon-left">
+              <i class="icon ion-map" style="color: #6f6b6b"></i> {{agrupacion[0].nombreCiudad}}
+          </a>
+          <a class="item item-icon-left">
+              <i class="icon ion-ios-location" style="color: #6f6b6b"></i> {{agrupacion[0].direccion}}
+          </a>
+          <a class="item item-icon-left">
+              <i class="icon ion-person" style="color: #6f6b6b"></i>   {{agrupacion[0].representante}}
+          </a>
+          <a class="item item-icon-left">
+              <i class="icon ion-person-stalker" style="color: #6f6b6b"></i> N° Empleados
+              <span class="badge badge-balanced">{{agrupacion[0].nempleados}}</span>
+          </a>
+           <a class="item item-icon-left">
+              <i class="icon ion-email" style="color: #6f6b6b"></i> N° {{agrupacion[0].correo}}
+          </a>
+           <a class="item item-icon-left">
+              <i class="icon ion-android-call" style="color: #6f6b6b"></i> N° {{agrupacion[0].telefono}}
+          </a>
+        </div>
+        <div class="list" ng-if="participante[0]">
+          <a class="item item-icon-left">
+              <i class="icon ion-ios-world" style="color: #6f6b6b"></i> {{participante[0].nombreDepartamento}}
+          </a>
+          <a class="item item-icon-left">
+              <i class="icon ion-map" style="color: #6f6b6b"></i> {{participante[0].nombreCiudad}}
+          </a>
+          <a class="item item-icon-left">
+              <i class="icon ion-ios-location" style="color: #6f6b6b"></i> {{participante[0].direccion}}
+          </a>
+          <a class="item item-icon-left">
+              <i class="icon ion-person" style="color: #6f6b6b"></i>   {{participante[0].profesion}}
+          </a>
+          <a class="item item-icon-left">
+              <i class="icon ion-android-calendar" style="color: #6f6b6b"></i> {{participante[0].fechaNac}}
+          </a>
+           <a class="item item-icon-left">
+              <i class="icon ion-email" style="color: #6f6b6b"></i> N° {{participante[0].correo}}
+          </a>
+           <a class="item item-icon-left">
+              <i class="icon ion-android-call" style="color: #6f6b6b"></i> N° {{participante[0].telefono}}
+          </a>
+        </div>
+          
+    </div>
+    <div ng-show="vista == 1">
+       <h4 ng-if="empresa[0]" class="text-center" style="margin-left: 2%; font-size: large">Contribución como empresa</h4>
+       <h4 ng-if="agrupacion[0]" class="text-center" style="margin-left: 2%; font-size: large">Contribución como agrupación</h4>
+       <h4 ng-if="participante[0]" class="text-center" style="margin-left: 2%; font-size: large">Contribución como participante</h4>
+       <div class="list" ng-if="empresa[0]">
+          <a ng-if="empresa[0]" class="item item-icon-left" ng-repeat="h in empresa[0].historial">
+           <i class="icon ion-android-arrow-dropright" style="font-size: 20px;  color: #ff9c3e"></i> 
+            <h2>{{h.nombre}} - {{h.tipoD}}</h2>
+            <p>{{h.evento}}</p>
+            <span class="badge" ng-if="h.subsidio == 0">Proveedor</span>
+            <span class="badge" ng-if="h.subsidio == 1">Patrocinio</span>
+            <span class="badge" ng-if="h.subsidio == 3">Consumidor</span>
+          </a>
+          <h4 class="text-center" style="margin-left: 2%; font-size: large">Premios Obtenidos</h4>
+          <h2 ng-if="empresa[0].premios.length == 0" style="font-size:15px; color: #47494a; margin-left: 8%">No ha obtenido premios.</h2>
+           <a  class="item item-icon-left" ng-repeat="p in empresa[0].premios">
+            <i class="icon ion-ribbon-b" style="font-size: 20px;  color: #ff9c3e"></i> 
+            <h2>{{p.detalle}} - {{p.nombreActividad}}</h2>
+            <p>{{p.nombreEvento}}</p>
+          </a>
+        </div>
+        <div class="list" ng-if="participante[0]">
+          <h2 ng-if="participante[0].premios.length == 0" style="font-size:15px; color: #47494a; margin-left: 8%">No ha obtenido premios.</h2>
+          <a  class="item item-icon-left" ng-repeat="p in participante[0].premios">
+            <i class="icon ion-ribbon-b" style="font-size: 20px;  color: #ff9c3e"></i> 
+            <h2>{{p.detalle}} - {{p.nombreActividad}}</h2>
+            <p>{{p.nombreEvento}}</p>
+          </a>
+        </div>
+         <div class="list" ng-if="agrupacion[0]">
+          <h2 ng-if="agrupacion[0].premios.length == 0" style="font-size:15px; color: #47494a; margin-left: 8%">No ha obtenido premios.</h2>
+          <a class="item item-icon-left" ng-repeat="p in agrupacion[0].premios">
+            <i class="icon ion-ribbon-b" style="font-size: 20px;  color: #ff9c3e"></i> 
+            <h2>{{p.detalle}} - {{p.nombreActividad}}</h2>
+            <p>{{p.nombreEvento}}</p>
+          </a>
+        </div>
+    </div>
+    <div ng-show="vista == 2">
+     <h4 class="border-top text-center" style="margin-left: 2% ; font-size: large"">Actividades en las que has participado</h4>
+            <h2 ng-if="empresa[0].actividades.length == 0" style="font-size:15px; color: #47494a; margin-left: 8%">No ha participado en ninguna actividad.</h2>
+            <div ng-if="empresa[0]" class="list card stable-bg" ng-repeat="act in empresa[0].actividades | filter:filtro" >
+            <div class="item">
+                <h2 style="padding-bottom: 2%;color: #116262;" >{{act.nombre}} - {{act.evento}}</h2>
+                <p>{{act.empresaTipo}}</p>
+                <p>{{act.modalidadD}}</p>
+                <p>{{act.tipoD}}</p>
+           </div>
+            <div class="item tabs tabs-secondary ">
+                <a class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5">
+                    {{act.aforo}}<span style="font-size:70%;"> Personas Alcanzadas</span> 
+                </a>
+                <a class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5">
+                    {{act.horas}}<span style="font-size:70%;">h Generadas</span> 
+                </a>
+            </div>
+        </div>
+         <h2 ng-if="agrupacion[0].actividades.length == 0" style="font-size:15px; color: #47494a; margin-left: 8%">No ha participado en ninguna actividad.</h2>
+        <div ng-if="agrupacion[0]" class="list card stable-bg" ng-repeat="act in agrupacion[0].actividades | filter:filtro" >
+            <div class="item">
+                <h2 style="padding-bottom: 2%;color: #116262;" >{{act.nombre}} - {{act.evento}}</h2>
+                <p>{{act.empresaTipo}}</p>
+                <p>{{act.modalidadD}}</p>
+                <p>{{act.tipoD}}</p>
+           </div>
+            <div class="item tabs tabs-secondary ">
+                <a class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5">
+                    {{act.aforo}}<span style="font-size:70%;"> Personas Alcanzadas</span> 
+                </a>
+                <a class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5">
+                    Duración {{act.horas}}<span style="font-size:70%;">h Generadas</span> 
+                </a>
+            </div>
+        </div>
+        <h2 ng-if="participante[0].actividades.length == 0" style="font-size:15px; color: #47494a; margin-left: 8%">No ha participado en ninguna actividad.</h2>
+        <div ng-if="participante[0]" class="list card stable-bg" ng-repeat="act in participante[0].actividades | filter:filtro" >
+            <div class="item">
+                <h2 style="padding-bottom: 2%;color: #116262;" >{{act.nombre}} - {{act.evento}}</h2>
+                <p>{{act.empresaTipo}}</p>
+                <p>{{act.modalidadD}}</p>
+                <p>{{act.tipoD}}</p>
+           </div>
+            <div class="item tabs tabs-secondary ">
+                <a class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5">
+                    {{act.aforo}}<span style="font-size:70%;"> Personas Alcanzadas</span> 
+                </a>
+                <a class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5">
+                    Duración {{act.horas}}<span style="font-size:70%;">h Generadas</span> 
+                </a>
+            </div>
+        </div>
+      </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,118 @@
+
+<ion-view view-title="Detalle Evento" class="">
+    <ion-content class="has-header has-footer">
+      <div class="row">
+          <div class="card marginCard col text-center" style="margin-bottom: 15px;">
+                
+            <div class="item item-text-wrap blue-grey-900" >
+                
+                <h1 class="letra">{{totales.aforo}}</h1>
+            </div>
+
+            <div class="item item-divider bgFooter no-padding">
+              Aforo
+            </div>
+          </div> 
+          <div class="card marginCard col text-center" style="margin-bottom: 15px;">
+                
+            <div class="item item-text-wrap blue-grey-900" >
+                
+                <h1 class="letra">{{totales.horas}}h</h1>
+            </div>
+
+            <div class="item item-divider bgFooter no-padding">
+              Entretenimiento
+            </div>
+          </div>    
+      </div>
+
+      <div class="list card stable-bg">
+          <div class="item ">
+              <p><i class="icon ion-ios-information-outline"></i> Hemos generado <b>{{totales.empleo}}</b> empleos con este evento</p> 
+          </div>
+      </div>
+
+      <h4 class="border-top text-center" style="padding-top: 2%;">Servicios</h4>
+
+      <div class="row">
+        <div class="col text-center">
+          <button class="button button-fab button-balanced icon fa fa-hotel" ng-click="buscarHoteles()"></button>
+        </div>
+        <div class="col text-center">
+          <button class="button button-fab button-assertive icon fa fa-cutlery" ng-click="buscarRestaurantes()"></button>
+        </div>
+        <div class="col text-center">
+          <button class="button button-fab button-energized icon fa fa-info" ng-click="buscarInfo()"></button>
+        </div>
+        <div class="col text-center">
+          <button class="button button-fab ink-dark button-calm icon material-icons" ng-click="buscarLugares()">beach_access</button> 
+        </div>
+      </div>
+
+
+      <h4 class="border-top text-center" style="padding-top: 2%;">Contenido</h4>
+      <div class="list" style="padding-bottom: 5%;">
+          <a class="item item-icon-left" ng-click="buscarActividades()">
+              <i class="icon ion-android-happy" style="font-size: x-large;"></i> Actividades
+              <span class="badge badge-balanzed">{{totales.actividad}}</span>
+          </a>
+          <a ng-if="user" class="item item-icon-left" ng-click="tipoInteres();">
+              <i class="icon ion-ios-information-outline" style="font-size: x-large;"></i> Información de interés
+              <span class="badge ">{{totales.interes}}</span>
+          </a>
+          <a class="item item-icon-left" ng-click="buscarEmpresasP()">
+              <i class="icon fa fa-handshake-o" style="font-size: x-large;"></i> Empresas Patricinadoras
+              <span class="badge">{{totales.empresasp}}</span>
+          </a>
+          <a class="item item-icon-left item-icon-left" ng-click="buscarEmpresasC()">
+              <i class="icon fa fa-building-o" style="font-size: x-large;" ></i> Empresas Colaboradoras
+              <span class="badge ">{{totales.empresasc}}</span>
+          </a>
+          <a class="item item-icon-left" ng-click="buscarJunta()">
+              <i class="icon fa fa-group" style="font-size: x-large;"></i> Organizadores del Evento
+              <span class="badge ">{{totales.junta}}</span>
+          </a>
+      </div>
+ </ion-content>
+     <div class="bar bar-footer" style="background-color: #ff9c3e;color: white;">
+            <div class="title" ng-if="estrellas.length == 0">
+                Valoración
+           </div>
+            <div class="title" ng-if="estrellas.length > 0">
+
+              <i class="io ion-android-star-outline" ng-if="estrellas[0].valor > 1"></i>
+
+              <i class="io ion-android-star-outline" ng-if="estrellas[0].valor > 2"></i>
+
+              <i class="io ion-android-star-outline" ng-if="estrellas[0].valor > 3"></i>
+
+              <i class="io ion-android-star-outline" ng-if="estrellas[0].valor > 4"></i>
+
+              <!--<i class="io ion-android-star-outline" ng-if="estrellas[0].valor == 5"></i>-->
+
+              <i class="io ion-android-star" ng-if="estrellas[0].valor == 1"></i>
+
+              <i class="io ion-android-star" ng-if="estrellas[0].valor < 1"></i>
+
+              <i class="io ion-android-star" ng-if="estrellas[0].valor > 2"></i>
+
+              <i class="io ion-android-star" ng-if="estrellas[0].valor < 3"></i>
+
+              <i class="io ion-android-star" ng-if="estrellas[0].valor < 4"></i>
+
+              <i class="io ion-android-star" ng-if="estrellas[0].valor < 5"></i>
+
+           </div>
+            <div class="buttons buttons-right" ng-show="user != false && estrellas.length == 0">
+                <button class="button button-energized-900 button-fab" ng-click="showPopup()">
+                    <i class="icon icon ion-star light"></i>
+                </button>
+            </div>
+            <div class="buttons buttons-left" ng-show="user != false">
+              <button class="button button-positive button-fab" ng-click="buscarEncuesta()">
+                    <i class="icon icon icon ion-edit"></i>
+              </button>
+            </div>
+
+        </div>
+</ion-view>

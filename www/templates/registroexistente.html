@@ -1,0 +1,36 @@
+<ion-view view-title="Registro" style="background-image:url(img/background.jpg);">
+   <ion-content class="">
+       <form name='formParticipante'>
+        <div class="list card" >
+          <div class="item item-body" style="padding-top: 0px; padding-bottom: 0px;">
+              <h2 style="color:#aaaaaa">Datos de la cuenta</h2>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Nombre</span>
+                <input type="text" ng-model="usuario.nombre" placeholder="Nombre">
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Apellido</span>
+                <input type="text" ng-model="usuario.apellido" placeholder="Apellido">
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Correo</span>
+                <input type="email" ng-model="usuario.correo" placeholder="Correo">
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Contraseña</span>
+                <input type="password" ng-model="usuario.contrasena" placeholder="Contraseña">
+              </label>
+              <label class="item item-input item-floating-label">
+                <span class="input-label">Confirmar Contraseña</span>
+                <input type="password" ng-model="usuario.contrasena2" placeholder="Confirmar Contraseña">
+              </label>
+              <br>
+          </div>
+
+        </div>
+    </form>
+    </ion-content>
+</ion-view>
+<div class="bar bar-footer " style="background-color:#ff9c3e;">
+  <button class="button button-clear icon-right ion-android-done pull-right" ng-click="guardarExistente();" style="background-color:#ff9c3e; color:white"></button>
+</div>

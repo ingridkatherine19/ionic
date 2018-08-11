@@ -1,0 +1,30 @@
+<ion-view view-title="Editar Contraseña" class="">
+
+    <ion-content class="has-header has-footer bgApp">
+            <div class="list">
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Contraseña Nueva</span>
+                    <input type="password" ng-change="llenarContrasena(1 , contrasena)" ng-model="contrasena" ng-minlength="6" placeholder="Contraseña Nueva">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Confirmar Contraseña</span>
+                    <input type="password" ng-model="contrasena2" ng-change="llenarContrasena(2 , contrasena2)" ng-minlength="6" placeholder="Confirmar Contraseña">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Contraseña Actual</span>
+                    <input type="password" ng-change="llenarContrasena(3, contrasenaact)" ng-model="contrasenaact" ng-minlength="6" placeholder="Contraseña Actual">
+                </label>
+              <br>
+            </div>
+    </ion-content>
+      <div class="bar bar-footer" style="background-color: #ff9c3e;color: white;">
+              <div class="title">Actualizar Contraseña</div>
+              <div class="buttons buttons-right">
+                  <button class="button button-assertive button-fab" ng-click="compararPassword()">
+                      <i class="icon icon ion-checkmark-round light"></i>
+                  </button>
+              </div>
+          </div>
+ 
+</ion-view>
+

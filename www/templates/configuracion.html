@@ -1,0 +1,42 @@
+<ion-view view-title="Configuración" class="">
+    
+        
+    <ion-content class="has-header bgApp">
+      <ul class="list">
+          <li class="item" style="border-bottom: 1px solid #d4cfcf;">
+            <b>Cuenta</b>
+          </li>
+          <li class="item" ng-click="irEditar()">
+            Editar Perfil
+          </li>
+          <li class="item" ng-click="irEditarcontrasena()">
+            Cambiar Contraseña
+          </li>
+          <li class="item" style="border-bottom: 1px solid #d4cfcf;">
+            <b>Notificaciones</b>
+          </li>
+          <li class="item item-toggle">
+             Nuevos Eventos
+             <label class="toggle toggle-energized">
+               <input type="checkbox" id="myCheckbox" ng-click="CambiarSwitch(1)">
+               <div class="track">
+                 <div class="handle"></div>
+               </div>
+             </label>
+          </li>
+          <li class="item item-toggle">
+             Invitaciones
+             <label class="toggle toggle-energized">
+               <input type="checkbox" id="myCheckbox2" ng-click="CambiarSwitch(2)">
+               <div class="track">
+                 <div class="handle"></div>
+               </div>
+             </label>
+          </li>
+      </ul>
+
+            
+                    
+    </ion-content>
+    
+</ion-view>

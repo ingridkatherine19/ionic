@@ -1,0 +1,152 @@
+﻿
+<ion-view view-title="Encuesta">
+    <ion-content class="has-header CoColor" >
+      <div class="list">
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Tipo de encuestado:
+          </div>
+          <select ng-model="tipo" style="max-width: 20%;">
+            <option value="1">Participante</option>
+            <option value="0" selected>Visitante</option>
+          </select>
+        </label>
+      </div>
+      <p style="text-align: left;padding-left: 3%;padding-right: 3%;"><b class="">Estimado Participante: </b></p>
+      <p style="text-align: left;padding-left: 3%;padding-right: 3%;" class="">Su opinión y sugerencias son importantes para nosotros, ya que nos permiten conocer su grado de satisfacción, sus necesidades y expectativas con respecto a los eventos de Ruedas de Negocios y/o Financiera y  Feria o Muestra Empresarial por lo que pedimos sea tan amable de contestar cuidadosamente y objetivamente las siguientes preguntas, utilizando la escala mostrada:<br>
+
+      EXCELENTE  5  -      BUENO 4     -    REGULAR 3 –     MALO 2     –     PESIMO 1     –      NO APLICA
+      </p>
+      <ul class="list">
+          <li class="item">
+            <p style="color: #659999">Las Actividad del evento te parecieron: </p><br>
+            <div class="row pregunta1">
+              <div class="col bordeLeft act" ng-click="data(0,1)">1</div>
+              <div class="col bordeOpcion" ng-click="data(0,2)">2</div>
+              <div class="col bordeOpcion" ng-click="data(0,3)">3</div>
+              <div class="col bordeOpcion" ng-click="data(0,4)">4</div>
+              <div class="col bordeOpcion" ng-click="data(0,5)">5</div>
+              <div class="col bordeRight" ng-click="data(0,6)">N/A</div>
+            </div>  
+          </li>
+      </ul>
+      
+      <ul class="list">
+          <li class="item">
+            <p style="color: #659999">La orientación para el desarrollo del evento fue: </p><br>
+            <div class="row pregunta2">
+              <div class="col bordeLeft act2" ng-click="data(1,1)">1</div>
+              <div class="col bordeOpcion" ng-click="data(1,2)">2</div>
+              <div class="col bordeOpcion" ng-click="data(1,3)">3</div>
+              <div class="col bordeOpcion" ng-click="data(1,4)">4</div>
+              <div class="col bordeOpcion" ng-click="data(1,5)">5</div>
+              <div class="col bordeRight" ng-click="data(1,6)">N/A</div>
+            </div>  
+          </li>
+      </ul>
+      <ul class="list">
+          <li class="item">
+            <p style="color: #659999">La metodología empleada en el evento fue: </p><br>
+            <div class="row pregunta3">
+              <div class="col bordeLeft act3" ng-click="data(2,1)">1</div>
+              <div class="col bordeOpcion" ng-click="data(2,2)">2</div>
+              <div class="col bordeOpcion" ng-click="data(2,3)">3</div>
+              <div class="col bordeOpcion" ng-click="data(2,4)">4</div>
+              <div class="col bordeOpcion" ng-click="data(2,5)">5</div>
+              <div class="col bordeRight" ng-click="data(2,6)">N/A</div>
+            </div>  
+          </li>
+      </ul>
+      <ul class="list">
+          <li class="item">
+            <p style="color: #659999">El lugar donde se desarrolló el evento fue: </p><br>
+            <div class="row pregunta4">
+              <div class="col bordeLeft act4" ng-click="data(3,1)">1</div>
+              <div class="col bordeOpcion" ng-click="data(3,2)">2</div>
+              <div class="col bordeOpcion" ng-click="data(3,3)">3</div>
+              <div class="col bordeOpcion" ng-click="data(3,4)">4</div>
+              <div class="col bordeOpcion" ng-click="data(3,5)">5</div>
+              <div class="col bordeRight" ng-click="data(3,6)">N/A</div>
+            </div>  
+          </li>
+      </ul>
+      <ul class="list">
+          <li class="item">
+            <p style="color:#659999">La distribución del espacio fue: </p><br>
+            <div class="row pregunta5">
+              <div class="col bordeLeft act5" ng-click="data(4,1)">1</div>
+              <div class="col bordeOpcion" ng-click="data(4,2)">2</div>
+              <div class="col bordeOpcion" ng-click="data(4,3)">3</div>
+              <div class="col bordeOpcion" ng-click="data(4,4)">4</div>
+              <div class="col bordeOpcion" ng-click="data(4,5)">5</div>
+              <div class="col bordeRight" ng-click="data(4,6)">N/A</div>
+            </div>  
+          </li>
+      </ul>
+      <ul class="list">
+          <li class="item">
+            <p style="color:#659999">La logística del evento fue: </p><br>
+            <div class="row pregunta6">
+              <div class="col bordeLeft act6" ng-click="data(5,1)">1</div>
+              <div class="col bordeOpcion" ng-click="data(5,2)">2</div>
+              <div class="col bordeOpcion" ng-click="data(5,3)">3</div>
+              <div class="col bordeOpcion" ng-click="data(5,4)">4</div>
+              <div class="col bordeOpcion" ng-click="data(5,5)">5</div>
+              <div class="col bordeRight" ng-click="data(5,6)">N/A</div>
+            </div>  
+          </li>
+      </ul>
+      <ul class="list">
+          <li class="item">
+            <p style="color: #659999">. En términos generales, su satisfacción del evento es: </p><br>
+            <div class="row pregunta7">
+              <div class="col bordeLeft act7" ng-click="data(6,1)">1</div>
+              <div class="col bordeOpcion" ng-click="data(6,2)">2</div>
+              <div class="col bordeOpcion" ng-click="data(6,3)">3</div>
+              <div class="col bordeOpcion" ng-click="data(6,4)">4</div>
+              <div class="col bordeOpcion" ng-click="data(6,5)">5</div>
+              <div class="col bordeRight" ng-click="data(6,6)">N/A</div>
+            </div>  
+          </li>
+      </ul>
+      <div class="list">
+
+        <label class="item item-input item-select">
+          <div class="input-label">
+            A través de que medio se enteró del evento:
+          </div>
+          <select ng-change="data(7,medio)" ng-model="medio" style="max-width: 20%;">
+            <option value="0">Radio</option>
+            <option value="1" selected>Televisión</option>
+            <option value="2">Correo Electrónico</option>
+            <option value="3">Prensa Escrita</option>
+            <option value="4">Página Web</option>
+          </select>
+        </label>
+
+      </div>
+      <div class="list">
+
+        <label class="item item-input item-select">
+          <div class="input-label">
+            ¿Le gustaría que se realizara otro evento empresarial como el desarrollado?  
+          </div>
+          <select ng-change="data(8,evento)" ng-model="evento" style="   max-width: 20%;">
+            <option value="1">Si</option>
+            <option value="0" selected>No</option>
+          </select>
+        </label>
+        
+
+      </div>
+      <div class="list" ng-if="evento==1">
+        
+        <label class="item item-input">
+          <textarea id="comentario" ng-model="comentario" placeholder="Comments"></textarea>
+        </label>
+      </div>
+      <button class="button button-block"  style="background-color: #ff9c3e ; color: white ; margin-top: 6% !important" ng-click="guardar(tipo)">
+        Guardar
+      </button> 
+   </ion-content>
+</ion-view>

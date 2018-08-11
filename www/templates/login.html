@@ -1,0 +1,35 @@
+<ion-view view-title="Login">
+    <ion-content style="background-image:url(img/background.jpg); top:3% ! important">
+    <img src="img/userLogin2.png" class="iconLogin" style=" width: 25% !important;
+   position: relative !important;
+   left: 39% !important;
+   top: 60px !important;
+   z-index: 1000 !important;
+   color: #FFFFFF !important;
+   font-weight: bold !important; ">
+
+        <div class="list card" style="margin-left:7% ; margin-right: 7%; margin-top: 5%" >
+       		<div class="item item-body">
+	       		<form class="" name="formu">
+			   		<div class="list">
+				   		<label class="item item-input item-floating-label">
+						    <span class="input-label">Correo</span>
+						    <input type="text" ng-model="user.correo" placeholder="Correo">
+						</label>
+					  	<label class="item item-input item-floating-label">
+					    	<span class="input-label">Contraseña</span>
+					    	<input type="password" ng-model="user.password" placeholder="Contraseña">
+					  	</label>
+					  	<br><br>
+					 	<button class="button button-block" style="background-color:#ff9c3e ; color: white" ng-disabled="!formu.$valid"  ng-click="login()">
+						  Entrar
+						</button>
+						 <p align="center" class=""> ¿Aún no tienes cuenta? <a href="#/app/tiporegistro">Registrate</a></p>
+					</div>
+				</form>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>
+
+

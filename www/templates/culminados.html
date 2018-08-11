@@ -1,0 +1,17 @@
+<ion-view view-title="Eventos Culminados" class="">
+    <ion-content class="has-header has-footer bgApp">
+      <!-- LA LISTA-->      
+      <div class="list" >
+          <a class="item item-avatar item-icon-right" ng-repeat="evento in eventos " ng-click="detalleEvento(evento);">
+            <img src="img/material4.jpg">
+            <h2>{{evento.descripcion}} </h2>
+            <p>{{evento.Direccion}}</p>
+            <p><b>Inició:</b> {{evento.inicio}}</p>
+            <p><b>Finalizó:</b> {{evento.fin}}</p>
+            <i class="icon ion-chevron-right" style="font-size:  20px;" ></i>
+          </a>
+      </div>
+                      
+    </ion-content>
+  
+</ion-view>

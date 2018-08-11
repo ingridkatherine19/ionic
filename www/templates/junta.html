@@ -1,0 +1,33 @@
+<ion-view view-title="Organizadores" class="">
+    <div class="bar bar-subheader item-input-inset bar-color">
+      <label class="item-input-wrapper" style="margin-left: 3%;margin-right: 3%;">
+        <i class="icon ion-ios-search placeholder-icon"></i>
+        <input type="search" placeholder="Search" ng-model="filtro">
+      </label>
+    </div>
+        
+    <ion-content class="has-subheader">
+
+      <div class="list" >
+
+          <a class="item item-icon-left item-icon-right " style="border-bottom: 1px solid #e4e0e0;" ng-repeat="j in junta | filter:filtro" href="tel:{{j.telefono}}">
+            <i class="icon ion-person" style="font-size:  xx-large;color: #ff9c3e;" ng-click="comollegar(lugar)"></i>
+            <h2 style="padding-bottom: 2%;">{{j.nombre}} {{j.apellido}} - <span  style="color: #8c8c8c;">{{j.cargoD}}</span> </h2>
+            <p>{{j.correo}}</p>
+            <p ng-if="j.nivel == 0">Educación Media</p>
+            <p ng-if="j.nivel == 1">Técnico</p>
+            <p ng-if="j.nivel == 2">Técnico Profesional</p>
+            <p ng-if="j.nivel == 3">Tecnólogo</p>
+            <p ng-if="j.nivel == 4">Profesional</p>
+            <p ng-if="j.nivel == 5">Especialización</p>
+            <p ng-if="j.nivel == 6">Maestría</p>
+            <p ng-if="j.nivel == 7">Doctorado</p>
+            <p ng-if="j.nivel == 8">Ninguno</p>
+            <i class="icon ion-ios-telephone" style="font-size:  20px" ng-click="llamar(i)"></i>
+          </a>
+      </div>
+      
+      
+    </ion-content>
+    
+</ion-view>

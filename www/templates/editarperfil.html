@@ -1,0 +1,35 @@
+<ion-view view-title="Editar Perfil" class="">
+    <ion-content class="has-header has-footer bgApp">
+            <div class="list">
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Nombre</span>
+                    <input type="text" ng-model="user.nombre" placeholder="Nombre">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Apellido</span>
+                    <input type="text" ng-model="user.apellido" placeholder="Apellido">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Identificación</span>
+                	<input type="number" ng-model="user.cedula" placeholder="Identificación">
+                </label>
+                 <label class="item item-input item-floating-label">
+                    <span class="input-label">Correo</span>
+                    <input type="email" ng-model="user.correo" placeholder="Correo">
+                </label>
+            <div class="row">
+            	<!--<button class="button button-fab button-assertive icon ion-checkmark-round " style="margin-left:80%;" ng-click="editarPerfil()"></button>-->
+           	</div>
+            <br>
+            </div>
+    </ion-content>
+      <div class="bar bar-footer" style="background-color: #ff9c3e;color: white;">
+              <div class="title">Actualizar</div>
+              <div class="buttons buttons-right">
+                  <button class="button button-assertive button-fab" ng-click="editarPerfil()">
+                      <i class="icon icon ion-checkmark-round light"></i>
+                  </button>
+              </div>
+          </div>
+</ion-view>
+

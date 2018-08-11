@@ -1,0 +1,663 @@
+﻿
+<ion-view view-title="Resumen">
+  
+    <ion-content class="has-header">
+      <div class="bar bar-subheader bar-stable static text-center">
+            <strong class="title" ng-if="tipoUser==0">Empresas</strong>
+            <strong class="title" ng-if="tipoUser==1">Agrupaciones</strong>
+            <strong class="title" ng-if="tipoUser==2">Participantes</strong>
+            <strong class="title" ng-if="tipoUser==3">Público</strong>
+      </div>
+      <p id="gcm_id"></p>
+      <!--TIPO DE USUARIO EMPRESA-->
+      <div ng-show="tipoUser==0">
+        <div class="row">
+            <div class="card marginCard col text-center" style="margin-bottom: 15px;">
+              
+              <div class="item item-text-wrap blue-grey-900" >
+                  
+                  <h1 class="letra">{{cantEventos}}</h1>
+              </div>
+
+              <div class="item item-divider bgFooter no-padding">
+                 <i class="icon ion-android-happy"></i> Eventos Realizados
+              </div>
+            </div>
+            <div class="card marginCard col text-center" style="margin-bottom: 15px;">
+                  
+              <div class="item item-text-wrap blue-grey-900" >
+                  
+                  <h1 class="letra">{{cantEmpresas}}</h1>
+              </div>
+
+              <div class="item item-divider bgFooter no-padding">
+                  Empresas Registradas
+              </div>
+            </div>    
+        </div>
+
+        <div class="row">
+          <div class="col text-center">
+            <button class="button button-fab button-positive icon fa fa-music" ng-click="showPopupAgrupacion()"></button>
+            <h4>{{agrupaciones}}</h4>
+          </div>
+          <div class="col text-center">
+            <button class="button button-fab button-calm icon fa fa-child" ng-click="showPopupParticipante()"></button>
+            <h4>{{participantes}}</h4>
+          </div>
+          <div class="col text-center">
+            <button class="button button-fab button-balanced icon fa fa-hotel" ng-click="showPopupHotel()"></button>
+            <h4>{{hoteles}}</h4>
+          </div>
+          <div class="col text-center">
+            <button class="button button-fab button-energized icon fa fa-cutlery" ng-click="showPopupRestaurante()"></button>
+            <h4>{{restaurantes}}</h4>
+          </div>
+            
+        </div>
+        <div class="card marginCard text-center">
+            <div class="item item-divider blue-grey-900 letra" style="font-size: large;padding-top: 0;">
+                <i class="icon ion-ios-pie"></i> Empresas
+            </div>
+            <div class="item item-text-wrap" >
+                <canvas id="pie" class="chart chart-pie" chart-data="data" chart-labels="labels" chart-options="options">
+                </canvas>  
+                </canvas> 
+                <div class="row">
+                  <div class="col facturado"><i class="icon ion-android-checkbox-blank"></i><p>Proveedoras</p></div>
+                  <div class="col cobrado"><i class="icon ion-android-checkbox-blank"></i><p> Patrocinadoras</p></div>
+                  <div class="col cobrar"><i class="icon ion-android-checkbox-blank"></i><p>Consumidoras</p></div>
+                </div>
+
+            </div>
+          </div>
+
+        <div class="row">
+            <div class="card marginCard col text-center" style="margin-bottom: 15px;">
+              
+              <div class="item item-text-wrap blue-grey-900" >
+                  
+                  <h1 class="letra">{{horasPasadas}}h</h1>
+              </div>
+
+              <div class="item item-divider bgFooter no-padding">
+                Horas Pasadas
+              </div>
+            </div>
+            <div class="card marginCard col text-center" style="margin-bottom: 15px;">
+                  
+              <div class="item item-text-wrap blue-grey-900" >
+                  
+                  <h1 class="letra">{{horasProximas}}h</h1>
+              </div>
+
+              <div class="item item-divider bgFooter no-padding">
+                Horas Proximas
+              </div>
+            </div>    
+        </div>
+        
+
+        <div class="row" style="padding-left: 4%">
+            <p class="no-margin">Contamos con empresas distribuidas de la siguiente forma:</p>
+        </div>
+        
+
+        <div class="row">
+            <div class="card marginCard col " style="margin-bottom: 15px;">
+              
+              <div class="item item-text-wrap " >
+                  
+                <p class="no-margin" style="width:100%" data-value="{{tipoEmpresa.promMicro.toFixed(0)}}">Micro</p>
+                    <progress max="100" value="{{tipoEmpresa.promMicro.toFixed(0)}}" class="html5">
+                        <!-- Browsers that support HTML5 progress element will ignore the html inside `progress` element. Whereas older browsers will ignore the `progress` element and instead render the html inside it. -->
+                        <div class="progress-bar">
+                            <span style="width: 100%">{{tipoEmpresa.promMicro.toFixed(0)}}%</span>
+                        </div>
+                </progress>
+              </div>
+
+            </div>
+            <div class="card marginCard col" style="margin-bottom: 15px;">
+                  
+              <div class="item item-text-wrap " >
+                  
+                <p class="no-margin" style="width:100%" data-value="{{tipoEmpresa.promPequena.toFixed(0)}}">Pequeñas</p>
+                    <progress max="100" value="{{tipoEmpresa.promPequena.toFixed(0)}}" class="jquery">
+                        <!-- Browsers that support HTML5 progress element will ignore the html inside `progress` element. Whereas older browsers will ignore the `progress` element and instead render the html inside it. -->
+                        <div class="progress-bar">
+                            <span style="width: 100%">{{tipoEmpresa.promPequena.toFixed(0)}}%</span>
+                        </div>
+                    </progress>
+              </div>
+
+            </div>    
+        </div>
+
+        <div class="row">
+            <div class="card marginCard col " style="margin-bottom: 15px;">
+              
+              <div class="item item-text-wrap " >
+                  
+                <p class="no-margin" style="width:100%" data-value="{{tipoEmpresa.promMediana.toFixed(0)}}">Medianas</p>
+                    <progress max="100" value="{{tipoEmpresa.promMediana.toFixed(0)}}" class="jquery">
+                        <!-- Browsers that support HTML5 progress element will ignore the html inside `progress` element. Whereas older browsers will ignore the `progress` element and instead render the html inside it. -->
+                        <div class="progress-bar">
+                            <span style="width: 100%">{{tipoEmpresa.promMediana.toFixed(0)}}%</span>
+                        </div>
+                </progress>
+              </div>
+
+            </div>
+            <div class="card marginCard col" style="margin-bottom: 15px;">
+                  
+              <div class="item item-text-wrap " >
+                  
+                <p class="no-margin" style="width:100%" data-value="{{tipoEmpresa.promGrande.toFixed(0)}}">Grandes</p>
+                    <progress max="100" value="{{tipoEmpresa.promGrande.toFixed(0)}}" class="html5">
+                        <!-- Browsers that support HTML5 progress element will ignore the html inside `progress` element. Whereas older browsers will ignore the `progress` element and instead render the html inside it. -->
+                        <div class="progress-bar">
+                            <span style="width: 100%">{{tipoEmpresa.promGrande.toFixed(0)}}%</span>
+                        </div>
+                    </progress>
+              </div>
+
+            </div>    
+          </div>
+
+          
+
+        <div class="row">
+            <div class="card marginCard col text-center" style="margin-bottom: 15px;">
+              
+              <div class="item item-text-wrap blue-grey-900" >
+                  
+                  <h1 class="letra">{{cantPersona}}</h1>
+              </div>
+
+              <div class="item item-divider bgFooter no-padding">
+                 <i class="icon ion-person"></i> Personas Proyectadas
+              </div>
+            </div>
+            <div class="card marginCard col text-center" style="margin-bottom: 15px;">
+                  
+              <div class="item item-text-wrap blue-grey-900" >
+                  
+                  <h1 class="letra">{{cantEmpleos}}</h1>
+              </div>
+
+              <div class="item item-divider bgFooter no-padding">
+                  Empleos Generados
+              </div>
+            </div>    
+        </div>
+      </div>
+        
+
+      <!--FIN DE TIPO DE USUARIO EMPRESA-->
+
+      <!--TIPO DE USUARIO AGRUPACION-->
+      <div ng-show="tipoUser==1">
+        <div class="row">
+            <div class="card marginCard col text-center" style="margin-bottom: 15px;">
+              
+              <div class="item item-text-wrap blue-grey-900" >
+                  
+                  <h1 class="letra">{{cantArtista}}</h1>
+              </div>
+
+              <div class="item item-divider bgFooter no-padding">
+                  Artistas
+              </div>
+            </div>
+            <div class="card marginCard col text-center" style="margin-bottom: 15px;">
+                  
+              <div class="item item-text-wrap blue-grey-900" >
+                  
+                  <h1 class="letra">{{cantAgrupaciones}}</h1>
+              </div>
+
+              <div class="item item-divider bgFooter no-padding">
+                  Empresas Agrupaciones
+              </div>
+            </div>    
+        </div>
+
+        <div class="row">
+          <div class="col text-center">
+            <button class="button button-fab button-royal icon   fa fa-building-o" ng-click="showPopupEmpresa()"></button>
+            <h4>{{empresas}}</h4>
+          </div>
+          <div class="col text-center">
+            <button class="button button-fab button-balanced icon fa fa-child" ng-click="showPopupParticipante()"></button>
+            <h4>{{participantes}}</h4>
+          </div>
+          <div class="col text-center">
+            <button class="button button-fab button-calm icon fa fa-hotel" ng-click="showPopupHotel()"></button>
+            <h4>{{hoteles}}</h4>
+          </div>
+          <div class="col text-center">
+            <button class="button button-fab button-energized icon fa fa-cutlery" ng-click="showPopupRestaurante()"></button>
+            <h4>{{restaurantes}}</h4>
+          </div>
+            
+        </div>
+
+        <div class="card marginCard text-center">
+          <div class="item item-divider blue-grey-900 letra" style="font-size: large;padding-top: 0;">
+              <i class="icon ion-music-note"></i> Generos Musicales
+          </div>
+          <div class="item item-text-wrap" >
+              <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series"> 
+              </canvas>
+             
+
+          </div>
+        </div>
+
+
+        <div class="row">
+            <div class="card marginCard col text-center" style="margin-bottom: 15px;">
+              
+              <div class="item item-text-wrap blue-grey-900" >
+                  
+                  <h1 class="letra">{{horasPasadas}}h</h1>
+              </div>
+
+              <div class="item item-divider bgFooter no-padding">
+                Horas Pasadas
+              </div>
+            </div>
+            <div class="card marginCard col text-center" style="margin-bottom: 15px;">
+                  
+              <div class="item item-text-wrap blue-grey-900" >
+                  
+                  <h1 class="letra">{{horasProximas}}h</h1>
+              </div>
+
+              <div class="item item-divider bgFooter no-padding">
+                Horas Proximas
+              </div>
+            </div>    
+        </div>
+
+        <div class="row" style="padding-left: 4%">
+            <p class="no-margin">Estamos distribuidos de entre los diferentes generos de la siguiente forma:</p>
+        </div>
+
+        <div class="row">
+            <div class="card marginCard col " style="margin-bottom: 15px;">
+              
+              <div class="item item-text-wrap " >
+                  
+                <p class="no-margin" style="width:100%" data-value="{{promMujeres.toFixed(0)}}">Mujeres</p>
+                    <progress max="100" value="{{promMujeres.toFixed(0)}}" class="html5">
+                        <!-- Browsers that support HTML5 progress element will ignore the html inside `progress` element. Whereas older browsers will ignore the `progress` element and instead render the html inside it. -->
+                        <div class="progress-bar">
+                            <span style="width: 100%">{{promMujeres.toFixed(0)}}%</span>
+                        </div>
+                </progress>
+              </div>
+
+            </div>
+            <div class="card marginCard col" style="margin-bottom: 15px;">
+                  
+              <div class="item item-text-wrap " >
+                  
+                <p class="no-margin" style="width:100%" data-value="{{promHombres.toFixed(0)}}">Hombres</p>
+                    <progress max="100" value="{{promHombres.toFixed(0)}}" class="jquery">
+                        <!-- Browsers that support HTML5 progress element will ignore the html inside `progress` element. Whereas older browsers will ignore the `progress` element and instead render the html inside it. -->
+                        <div class="progress-bar">
+                            <span style="width: 100%">{{promHombres.toFixed(0)}}%</span>
+                        </div>
+                    </progress>
+              </div>
+
+            </div>    
+        </div>
+
+        <div class="row">
+            <div class="card marginCard col text-center" style="margin-bottom: 15px;">
+              
+              <div class="item item-text-wrap blue-grey-900" >
+                  
+                  <h1 class="letra">{{cantPersona}}</h1>
+              </div>
+
+              <div class="item item-divider bgFooter no-padding">
+                  <i class="icon ion-person"></i> Personas Proyectadas
+              </div>
+            </div>
+            <div class="card marginCard col text-center" style="margin-bottom: 15px;">
+                  
+              <div class="item item-text-wrap blue-grey-900" >
+                  
+                  <h1 class="letra">{{cantEventos}}</h1>
+              </div>
+
+              <div class="item item-divider bgFooter no-padding">
+                <i class="icon ion-android-happy"></i>  Eventos Realizados
+              </div>
+            </div>    
+        </div>
+      </div>
+        
+
+      <!--FIN DE TIPO DE USUARIO AGRUPACION-->
+
+      <!--TIPO DE USUARIO PARICIPANTE-->
+      <div ng-show="tipoUser==2">
+        <div class="row">
+            <div class="card marginCard col text-center" style="margin-bottom: 15px;">
+              
+              <div class="item item-text-wrap blue-grey-900" >
+                  
+                  <h1 class="letra">{{cantParticipantes}}</h1>
+              </div>
+
+              <div class="item item-divider bgFooter no-padding">
+                 <i class="icon ion-ios-people"></i> Participantes
+              </div>
+            </div>
+            <div class="card marginCard col text-center" style="margin-bottom: 15px;">
+                  
+              <div class="item item-text-wrap blue-grey-900" >
+                  
+                  <h1 class="letra">{{premio}}</h1>
+              </div>
+
+              <div class="item item-divider bgFooter no-padding">
+                  <i class="icon ion-trophy"></i> Premios
+              </div>
+            </div>    
+        </div>
+
+        <div class="row">
+          <div class="col text-center">
+            <button class="button button-fab button-royal icon   fa fa-building-o" ng-click="showPopupEmpresa()"></button>
+            <h4>{{empresas}}</h4>
+          </div>
+          <div class="col text-center">
+            <button class="button button-fab button-energized icon fa fa-music" ng-click="showPopupAgrupacion()"></button>
+            <h4>{{agrupaciones}}</h4>
+          </div>
+          <div class="col text-center">
+            <button class="button button-fab button-balanced icon fa fa-hotel" ng-click="showPopupHotel()"></button>
+            <h4>{{hoteles}}</h4>
+          </div>
+          <div class="col text-center">
+            <button class="button button-fab button-assertive icon fa fa-cutlery" ng-click="showPopupRestaurante()"></button>
+            <h4>{{restaurantes}}</h4>
+          </div>
+
+        </div>
+
+        <div class="card marginCard text-center">
+          <div class="item item-divider blue-grey-900 letra" style="font-size: large;padding-top: 0;">
+              <i class="icon ion-ios-people"></i> Tipo de Participantes
+          </div>
+          <div class="item item-text-wrap" >
+              <canvas id="doughnut" class="chart chart-doughnut" chart-data="data" chart-labels="labels">
+              </canvas>
+              <div class="row">
+                <div class="col facturado"><i class="icon ion-android-checkbox-blank"></i><p>Participantes Juridicos</p></div>
+                <div class="col cobrado"><i class="icon ion-android-checkbox-blank"></i><p> Participantes Naturales</p></div>
+              </div>
+
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="card marginCard col text-center" style="margin-bottom: 15px;">
+              
+              <div class="item item-text-wrap blue-grey-900" >
+                  
+                  <h1 class="letra">{{horasPasadas}}h</h1>
+              </div>
+
+              <div class="item item-divider bgFooter no-padding">
+                Horas Pasadas
+              </div>
+            </div>
+            <div class="card marginCard col text-center" style="margin-bottom: 15px;">
+                  
+              <div class="item item-text-wrap blue-grey-900" >
+                  
+                  <h1 class="letra">{{horasProximas}}h</h1>
+              </div>
+
+              <div class="item item-divider bgFooter no-padding">
+                Horas Proximas
+              </div>
+            </div>    
+        </div>
+
+        <div class="row" style="padding-left: 4%">
+            <p class="no-margin">Estamos distribuidos de entre los diferentes generos de la siguiente forma:</p>
+        </div>
+
+        <div class="row">
+            <div class="card marginCard col " style="margin-bottom: 15px;">
+              
+              <div class="item item-text-wrap " >
+                  
+                <p class="no-margin" style="width:100%" data-value="{{promMujeres.toFixed(0)}}">Mujeres</p>
+                    <progress max="100" value="{{promMujeres.toFixed(0)}}" class="html5">
+                        <!-- Browsers that support HTML5 progress element will ignore the html inside `progress` element. Whereas older browsers will ignore the `progress` element and instead render the html inside it. -->
+                        <div class="progress-bar">
+                            <span style="width: 100%">{{promMujeres}}%</span>
+                        </div>
+                </progress>
+              </div>
+
+            </div>
+            <div class="card marginCard col" style="margin-bottom: 15px;">
+                  
+              <div class="item item-text-wrap " >
+                  
+                <p class="no-margin" style="width:100%" data-value="{{promHombres.toFixed(0)}}">Hombres</p>
+                    <progress max="100" value="{{promHombres.toFixed(0)}}" class="jquery">
+                        <!-- Browsers that support HTML5 progress element will ignore the html inside `progress` element. Whereas older browsers will ignore the `progress` element and instead render the html inside it. -->
+                        <div class="progress-bar">
+                            <span style="width: 100%">{{promHombres}}%</span>
+                        </div>
+                    </progress>
+              </div>
+
+            </div>    
+        </div>
+
+
+        <div class="row">
+            <div class="card marginCard col text-center" style="margin-bottom: 15px;">
+              
+              <div class="item item-text-wrap blue-grey-900" >
+                  
+                  <h1 class="letra">{{cantPersona}}</h1>
+              </div>
+
+              <div class="item item-divider bgFooter no-padding">
+                  <i class="icon ion-person"></i> Personas Proyectadas
+              </div>
+            </div>
+            <div class="card marginCard col text-center" style="margin-bottom: 15px;">
+                  
+              <div class="item item-text-wrap blue-grey-900" >
+                  
+                  <h1 class="letra">{{cantEventos}}</h1>
+              </div>
+
+              <div class="item item-divider bgFooter no-padding">
+                <i class="icon ion-android-happy"></i> Eventos Realizados
+              </div>
+            </div>    
+        </div>
+      </div>
+        
+
+      <!--FIN DE TIPO DE USUARIO PARCIPANTE-->
+      
+
+      <!--TIPO DE USUARIO PUBLICO-->
+      <div ng-show="tipoUser==3">
+        <div class="row">
+            <div class="card marginCard col text-center" style="margin-bottom: 15px;">
+                  
+              <div class="item item-text-wrap blue-grey-900" >
+                  
+                  <h1 class="letra">{{cantEventos}}</h1>
+              </div>
+
+              <div class="item item-divider bgFooter no-padding">
+                <i class="icon ion-android-happy"></i>  Eventos Realizados
+              </div>
+            </div> 
+            <div class="card marginCard col text-center" style="margin-bottom: 15px;">
+                  
+              <div class="item item-text-wrap blue-grey-900" >
+                  
+                  <h1 class="letra">{{actividades}}</h1>
+              </div>
+
+              <div class="item item-divider bgFooter no-padding">
+                  <i class="icon ion-thumbsup"></i> Actividades
+              </div>
+            </div>    
+        </div>
+        <div class="row">
+          <div class="col text-center">
+            <button class="button button-fab button-balanced icon fa fa-hotel" ng-click="showPopupHotel()"></button>
+            <h4>{{hoteles}}</h4>
+          </div>
+          <div class="col text-center">
+            <button class="button button-fab button-assertive icon fa fa-cutlery" ng-click="showPopupRestaurante()"></button>
+            <h4>{{restaurantes}}</h4>
+          </div>
+          <div class="col text-center">
+            <button class="button button-fab ink-dark button-calm icon material-icons" ng-click="showPopupLugares()">beach_access</button>
+            <h4>{{lugares}}</h4>
+          </div>
+          <div class="col text-center">
+            <button class="button button-fab button-energized icon fa fa-music" ng-click="showPopupAgrupacion()"></button>
+            <h4>{{agrupaciones}}</h4>
+          </div>
+            
+        </div>
+
+        <div class="card marginCard text-center">
+          <div class="item item-divider blue-grey-900 letra" style="font-size: large;padding-top: 0;">
+              <i class="icon  fa fa-bar-chart"></i> Tipo de Actividades
+          </div>
+          <div class="item item-text-wrap" >
+              <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series">
+              </canvas>
+              <div class="row">
+                <div class="col cobrado"><i class="icon ion-android-checkbox-blank"></i><p>Sin valor comercial</p></div>
+                <div class="col facturado "><i class="icon ion-android-checkbox-blank"></i><p> Con boleta de ingreso</p></div>
+                <div class="col cobrar"><i class="icon ion-android-checkbox-blank"></i><p> Con valor comercial</p></div>
+              </div>
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="card marginCard col text-center" style="margin-bottom: 15px;">
+              
+              <div class="item item-text-wrap blue-grey-900" >
+                  
+                  <h1 class="letra">{{horasPasadas}}h</h1>
+              </div>
+
+              <div class="item item-divider bgFooter no-padding">
+                Horas Pasadas
+              </div>
+            </div>
+            <div class="card marginCard col text-center" style="margin-bottom: 15px;">
+                  
+              <div class="item item-text-wrap blue-grey-900" >
+                  
+                  <h1 class="letra">{{horasProximas}}h</h1>
+              </div>
+
+              <div class="item item-divider bgFooter no-padding">
+                Horas Proximas
+              </div>
+            </div>    
+        </div>
+
+        <div class="row" style="padding-left: 4%">
+            <p class="no-margin">Estamos distribuidos de entre los diferentes generos de la siguiente forma:</p>
+        </div>
+
+        <div class="row">
+            <div class="card marginCard col " style="margin-bottom: 15px;">
+              
+              <div class="item item-text-wrap " >
+                  
+                <p class="no-margin" style="width:100%" data-value="50">Mujeres</p>
+                    <progress max="100" value="50" class="html5">
+                        <!-- Browsers that support HTML5 progress element will ignore the html inside `progress` element. Whereas older browsers will ignore the `progress` element and instead render the html inside it. -->
+                        <div class="progress-bar">
+                            <span style="width: 100%">50%</span>
+                        </div>
+                </progress>
+              </div>
+
+            </div>
+            <div class="card marginCard col" style="margin-bottom: 15px;">
+                  
+              <div class="item item-text-wrap " >
+                  
+                <p class="no-margin" style="width:100%" data-value="70">Hombres</p>
+                    <progress max="100" value="70" class="jquery">
+                        <!-- Browsers that support HTML5 progress element will ignore the html inside `progress` element. Whereas older browsers will ignore the `progress` element and instead render the html inside it. -->
+                        <div class="progress-bar">
+                            <span style="width: 100%">70%</span>
+                        </div>
+                    </progress>
+              </div>
+
+            </div>    
+        </div>
+
+        <div class="row">
+            <div class="card marginCard col text-center" style="margin-bottom: 15px;">
+              
+              <div class="item item-text-wrap blue-grey-900" >
+                  
+                  <h1 class="letra">{{cantPersona}}</h1>
+              </div>
+
+              <div class="item item-divider bgFooter no-padding">
+                  <i class="icon ion-person"></i> Personas Proyectadas
+              </div>
+            </div>
+            <div class="card marginCard col text-center" style="margin-bottom: 15px;">
+                  
+              <div class="item item-text-wrap blue-grey-900" >
+                  
+                  <h1 class="letra">{{cantEventos}}</h1>
+              </div>
+
+              <div class="item item-divider bgFooter no-padding">
+                <i class="icon ion-android-happy"></i>  Eventos Realizados
+              </div>
+            </div>    
+        </div>
+      </div>
+        
+
+      <!--FIN DE TIPO DE USUARIO PUBLICO-->
+        
+      <button class="button button-full" ng-click="actionSheet()">Action Sheet</button>  
+
+    </ion-content>
+
+    <div class="bar bar-footer" style="background-color: #ff9c3e;color: white;">
+        <div class="title">Cambiar Usuario</div>
+        <div class="buttons buttons-right">
+            <button class="button button-energized-900 button-fab" ng-click="actionSheet()">
+                <i class="icon icon ion-person light"></i>
+            </button>
+        </div>
+    </div>
+</ion-view>
