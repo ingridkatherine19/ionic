@@ -5,11 +5,11 @@
       
       <!-- LA LISTA-->  
       <div ng-show="x==1">
-    
+        <p ng-if="!eventos[0]" style="text-align: center; margin-top: 5%">No hay eventos</p>
       <div class="list" >
 
-          <a class="item item-avatar item-icon-right" ng-repeat="evento in eventos " ng-click="detalleEvento(evento)">
-            <img src="img/material4.jpg">
+          <a class="item item-thumbnail-left item-icon-right" ng-repeat="evento in eventos " ng-click="detalleEvento(evento)">
+            <img src="{{path+evento.imagen}}">
             <h2>{{evento.descripcion}} </h2>
             <p>{{evento.Direccion}}</p>
             <p><b>Inicia: </b>{{evento.inicio}}</p>
@@ -25,14 +25,6 @@
       <div ng-if="x==2" >
         <div id="map1" ng-init="initialize()" style="width: 100%; height: 100% !important;    position: absolute !important;"></div>
       </div>
-
-      <!-- EL CALENDARIO-->
-      <div ng-show="x==3">
-        <!--<div ui-calendar ng-model="eventSources"></div>-->
-        <div mbsc-form>
-          <div id="demo"></div>
-        </div>
-      </div>
                     
     </ion-content>
     <div class="bar bar-footer bar-balanced">
@@ -42,9 +34,6 @@
           </a>
           <a class="tab-item" ng-class="{active: x == 2}" href="" ng-click="act(2)">
               <i class="icon ion-ios-location"  style="font-size: 25px ! important ; height: 25px ! important"></i> Mapa
-          </a>
-          <a class="tab-item" ng-class="{active: x == 3}" href="" ng-click="act(3)">
-              <i class="icon ion-android-calendar"  style="font-size: 25px ! important ; height: 25px ! important"></i> Calendario
           </a>
       </div>
     </div>

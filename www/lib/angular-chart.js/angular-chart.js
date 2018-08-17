@@ -19,14 +19,14 @@
   }
 }(function (angular, Chart) {
   'use strict';
-
+ 
   Chart.defaults.global.multiTooltipTemplate = '<%if (datasetLabel){%><%=datasetLabel%>: <%}%><%= value %>';
   Chart.defaults.global.tooltips.mode = 'label';
   Chart.defaults.global.elements.line.borderWidth = 2;
   Chart.defaults.global.elements.rectangle.borderWidth = 2;
   Chart.defaults.global.legend.display = false;
   Chart.defaults.global.colors = [
-    '#97BBCD', // blue
+    '#000000', // blue
     '#DCDCDC', // light grey
     '#F7464A', // red
     '#46BFBD', // green

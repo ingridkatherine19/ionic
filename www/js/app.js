@@ -13,7 +13,7 @@ app.run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
-        window.FirebasePlugin.getToken(function(token) {
+        /*window.FirebasePlugin.getToken(function(token) {
             // save this server-side and use it to push notifications to this device
             console.log(token);
             //alert('token:'+token);
@@ -21,7 +21,7 @@ app.run(function ($ionicPlatform) {
         }, function(error) {
             console.error(error);
             //alert('error'+error);
-        });
+        });*/
 
         if (window.cordova && window.cordova.plugins.Keyboard) {
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -287,6 +287,16 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         views: {
             'menuContent': {
                 templateUrl: 'templates/encuesta.html',
+                controller: 'DetalleEventoFCtrl'
+            }
+        }
+    })
+
+    .state('app.Consumo', {
+        url: '/consumo',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/consumo.html',
                 controller: 'DetalleEventoFCtrl'
             }
         }

@@ -1,9 +1,10 @@
 <ion-view view-title="Eventos Culminados" class="">
     <ion-content class="has-header has-footer bgApp">
-      <!-- LA LISTA-->      
+      <!-- LA LISTA--> 
+      <p ng-if="!eventos[0]" style="text-align: center; margin-top: 5%">No hay eventos</p>    
       <div class="list" >
-          <a class="item item-avatar item-icon-right" ng-repeat="evento in eventos " ng-click="detalleEvento(evento);">
-            <img src="img/material4.jpg">
+          <a class="item item-thumbnail-left item-icon-right" ng-repeat="evento in eventos " ng-click="detalleEvento(evento);">
+            <img src="{{path+evento.imagen}}">
             <h2>{{evento.descripcion}} </h2>
             <p>{{evento.Direccion}}</p>
             <p><b>Inició:</b> {{evento.inicio}}</p>

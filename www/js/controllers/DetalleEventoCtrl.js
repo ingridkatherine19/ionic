@@ -16,9 +16,10 @@ app.controller('DetalleEventoCtrl', function($state, $scope, $ionicActionSheet, 
         }else{
           //consultas
           $scope.inicio();
+          $scope.allSocio();
         }
 	});
-  
+   
   $scope.$on('$ionicView.enter', function(e) {
   
   });
@@ -131,6 +132,23 @@ app.controller('DetalleEventoCtrl', function($state, $scope, $ionicActionSheet, 
       //console.log($rootScope.info);
       $state.go('app.Info');
       $ionicLoading.hide();
+    });
+  }
+
+  $scope.allSocio = function(){
+    $http({
+        url: path + 'socio/reporte',
+        method: 'get',
+        params: {
+          idEvento: $rootScope.eventoDetalle.idEvento
+        },
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).success(function (response) {
+      $scope.totalEmpleo = response.empleos;
+      //$scope.totalEmpresa = response.empresas;
+    
     });
   }
 

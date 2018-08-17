@@ -1,0 +1,61 @@
+﻿
+<ion-view view-title="Reciclaje">
+  
+    <ion-content class="has-header has-footer">
+      
+      
+      <div>
+        <h4 class=" text-center letraAzul" style="padding-top: 2%;">Elementos recilados</h4>
+        <div class="list" style="padding-bottom: 5%;">
+            <a class="item item-icon-left" ng-click="buscarJunta()">
+                <i class="icon fa fa-recycle" style="font-size: x-large;color:green"></i> Aluminio
+                <span class="badge ">{{reciclado[0].kg2}} Kg</span>
+            </a>
+            <a class="item item-icon-left" ng-click="buscarJunta()">
+                <i class="icon fa fa-recycle" style="font-size: x-large;color:green"></i> Vidrio
+                <span class="badge ">{{reciclado[1].kg2}} Kg</span>
+            </a>
+            <a class="item item-icon-left" ng-click="buscarJunta()">
+                <i class="icon fa fa-recycle" style="font-size: x-large;color:green"></i> Plástico PET
+                <span class="badge ">{{reciclado[2].kg2}} Kg</span>
+            </a>
+            <a class="item item-icon-left" ng-click="buscarJunta()">
+                <i class="icon fa fa-recycle" style="font-size: x-large;color:green"></i> Cartón
+                <span class="badge ">{{reciclado[3].kg2}} Kg</span>
+            </a>
+            <a class="item item-icon-left" ng-click="buscarJunta()">
+                <i class="icon fa fa-recycle" style="font-size: x-large;color:green"></i> Orgánico
+                <span class="badge ">{{reciclado[4].kg2}} Kg</span>
+            </a>
+        </div>
+        <h4 class=" text-center letraAzul" style="padding-top: 2%;">Reducción</h4>
+        <div class="list" style="padding-bottom: 5%;">
+            <a class="item item-icon-left" ng-click="buscarJunta()">
+                <i class="icon fa fa-angle-double-down" style="font-size: x-large;color:green"></i> Arboles
+                <span class="badge ">{{impacto.reduccionArboles}} Unds</span>
+            </a>
+            <a class="item item-icon-left" ng-click="buscarJunta()">
+                <i class="icon fa fa-angle-double-down" style="font-size: x-large;color:green"></i> Agua
+                <span class="badge ">{{impacto.reduccionAgua}} Lts</span>
+            </a>
+            <a class="item item-icon-left" ng-click="buscarJunta()">
+                <i class="icon fa fa-angle-double-down" style="font-size: x-large;color:green"></i> Petroleo
+                <span class="badge ">{{impacto.reduccionPetro}} Lts</span>
+            </a>
+            <a class="item item-icon-left" ng-click="buscarJunta()">
+                <i class="icon fa fa-angle-double-down" style="font-size: x-large;color:green"></i> Energia electrica
+                <span class="badge ">{{impacto.reduccionKwh}} Kwh</span>
+            </a>
+            <a class="item item-icon-left" ng-click="buscarJunta()">
+                <i class="icon fa fa-angle-double-down" style="font-size: x-large;color:green"></i> Co2
+                <span class="badge ">{{impacto.reduccionCo2}} Tn</span>
+            </a>
+        </div>
+
+      </div>
+        
+      
+    </ion-content>
+
+    
+</ion-view>

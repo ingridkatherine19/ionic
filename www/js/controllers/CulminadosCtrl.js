@@ -1,12 +1,16 @@
 app.controller('CulminadosCtrl', function($state, $scope,$ionicLoading, $rootScope, $http, $ionicLoading, $ionicScrollDelegate , ionicMaterialMotion){
-  $scope.$on("$ionicView.beforeEnter", function(event, data){
+  
+    
+    $scope.path = 'http://192.168.100.238/ideconNuevo/public/';
+    
+    $scope.$on("$ionicView.beforeEnter", function(event, data){
         $ionicLoading.show({
             template: '<div class="loader"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>'
         });
         $scope.buscarEvento();
         $scope.blinds();
 
-  });
+    });
     $scope.$on('$ionicView.enter', function(e) {
     
     });

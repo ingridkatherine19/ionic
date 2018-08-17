@@ -1,8 +1,8 @@
 app.controller('EventoCtrl', function($state, $scope,$ionicLoading, $rootScope, $http, $ionicLoading, $ionicScrollDelegate , ionicMaterialMotion){
     
     $scope.x = 1;
+    $scope.path = 'http://192.168.100.238/ideconNuevo/public/';
     
-
   $scope.$on("$ionicView.beforeEnter", function(event, data){
 	      $ionicLoading.show({
             template: '<div class="loader"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>'
@@ -36,11 +36,7 @@ app.controller('EventoCtrl', function($state, $scope,$ionicLoading, $rootScope, 
           $scope.datos.push($scope.aux);
             
         }); 
-        $('#demo').mobiscroll().eventcalendar({
-            display: 'inline',
-            layout: 'liquid',
-            data: $scope.datos
-        });
+        
 
         var now = new Date();
         console.log(now, $scope.datos);

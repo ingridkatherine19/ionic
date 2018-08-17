@@ -1,38 +1,36 @@
 
 <ion-view view-title="Detalle Evento" class="">
     <ion-content class="has-header has-footer">
-      <div class="row">
-          <div class="card marginCard col text-center" style="margin-bottom: 15px;">
-                
-            <div class="item item-text-wrap blue-grey-900" >
-                
-                <h1 class="letra">{{totales.aforo}}</h1>
-            </div>
+        <div class="row">
+            <div class="card marginCard col text-center" style="margin-bottom: 15px;">
+                    
+                <div class="item item-text-wrap" >
+                    <h1 class="letraAzul">{{totales.aforo}}</h1>
+                </div>
 
-            <div class="item item-divider bgFooter no-padding">
-              Aforo
-            </div>
-          </div> 
-          <div class="card marginCard col text-center" style="margin-bottom: 15px;">
-                
-            <div class="item item-text-wrap blue-grey-900" >
-                
-                <h1 class="letra">{{totales.horas}}h</h1>
-            </div>
+                <div class="item item-divider bgFooter no-padding letraAzul">
+                    Aforo
+                </div>
+            </div> 
+            <div class="card marginCard col text-center" style="margin-bottom: 15px;">
+                    
+                <div class="item item-text-wrap" >
+                    <h1 class="letraAzul">{{totales.horas}}h</h1>
+                </div>
 
-            <div class="item item-divider bgFooter no-padding">
-              Entretenimiento
-            </div>
-          </div>    
-      </div>
+                <div class="item item-divider bgFooter no-padding letraAzul">
+                    Entretenimiento 
+                </div>
+            </div>    
+        </div>
 
       <div class="list card stable-bg">
           <div class="item ">
-              <p><i class="icon ion-ios-information-outline"></i> Hemos generado <b>{{totales.empleo}}</b> empleos con este evento</p> 
+              <p><i class="icon ion-ios-information-outline"></i> Hemos generado <b>{{totalEmpleo.total}}</b> empleos con este evento</p> 
           </div>
       </div>
 
-      <h4 class="border-top text-center" style="padding-top: 2%;">Servicios</h4>
+      <h4 class="border-top text-center letraAzul" style="padding-top: 2%;">Servicios</h4>
 
       <div class="row">
         <div class="col text-center">
@@ -50,7 +48,7 @@
       </div>
 
 
-      <h4 class="border-top text-center" style="padding-top: 2%;">Contenido</h4>
+      <h4 class="border-top text-center letraAzul" style="padding-top: 2%;">Contenido</h4>
       <div class="list" style="padding-bottom: 5%;">
           <a class="item item-icon-left" ng-click="buscarActividades()">
               <i class="icon ion-android-happy" style="font-size: x-large;"></i> Actividades
@@ -72,7 +70,11 @@
               <i class="icon fa fa-group" style="font-size: x-large;"></i> Organizadores del Evento
               <span class="badge ">{{totales.junta}}</span>
           </a>
-      </div>
+          <a class="item item-icon-left" ng-click="buscarConsumo()">
+            <i class="icon fa fa-recycle" style="font-size: x-large;"></i> Materiales reciclados
+            <span class="badge ">5</span>
+        </a>
+    </div>
  </ion-content>
      <div class="bar bar-footer" style="background-color: #ff9c3e;color: white;">
             <div class="title" ng-if="estrellas.length == 0">
