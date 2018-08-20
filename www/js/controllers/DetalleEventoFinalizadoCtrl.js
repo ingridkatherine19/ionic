@@ -95,6 +95,31 @@ app.controller('DetalleEventoFCtrl', function($state, $scope, $rootScope , $http
     });
   }
 
+  $scope.interesEmpresa= function(){
+    $ionicLoading.show({
+        template: '<div class="loader"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>'
+    });
+
+    $http({
+        url: path + 'evento/interese',
+        method: 'get',
+        params:{
+          idEvento: $rootScope.eventoDetalle.idEvento
+        },
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).success(function (response) {
+      $rootScope.actividades = response.actividades;
+      //cosas que nos pueden proveer las empresas
+      $rootScope.costos = response.costos;
+      //cosas que podemos ofrecerle a las empresas
+      $rootScope.ingresos = response.ingresos;
+
+      $ionicLoading.hide();
+    });
+  }
+
   $scope.buscarConsumo = function(){
     $ionicLoading.show({
         template: '<div class="loader"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>'

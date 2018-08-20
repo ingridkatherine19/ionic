@@ -1,12 +1,7 @@
 <ion-view view-title="Información de Interés" class="">
     
     <ion-content class="has-header has-footer">
-    <div class="bar bar-subheader bar-stable static text-center">
-            <strong class="title" ng-if="tipoUser==0">Empresas</strong>
-            <strong class="title" ng-if="tipoUser==1">Agrupaciones</strong>
-            <strong class="title" ng-if="tipoUser==2">Participantes</strong>
-    </div>
-    <div ng-if="tipoUser==0">
+    <div>
       
     <h4 class="border-top" style="padding-left: 2%;font-size: medium;" >
       <i class="icon ion-android-remove" ng-click="detalleCosto()" ng-if="detaCosto == 0"></i>
@@ -79,101 +74,7 @@
       </div>
     </div>
 
-    <!--Agrupacion-->
-    <div ng-if="tipoUser==1">
-      <h4 class="border-top" style="padding-left: 2%;font-size: medium;">
-      <i class="icon ion-android-remove" ></i>
-      Actividades pensadas para los Grupos Artisticos:</h4>
-
-      <div class="list card stable-bg"   0" ng-repeat="act in actividades " >
-          <div class="item item-avatar item-icon-right">
-              <img src="img/material4.jpg">
-              <h2 style="padding-bottom: 2%;color: #116262;" >{{act.nombre}}</h2>
-              <p>{{act.empresaTipo}}</p>
-              <p>{{act.modalidadD}}</p>
-              <p ng-if="act.direccion[0] && !act.sub[0]">{{act.direccion[0].direccion}}</p>
-              <i ng-if="act.sub[0]" class="icon ion-ios-arrow-down" ng-click="verSubAct($index)" ></i>
-          </div>
-          <div class="item item-body " style="padding-top: 0" ng-show="act.detalle == 1">
-            <h4>Otras actividades a realizar:</h4>
-            <div class="list" >
-                <a class="item  item-icon-right" ng-repeat="sub in act.sub " style="padding-top: 1; padding-bottom: 0;border-bottom: solid 1px #ccc;">
-                  <h2 style="margin: 0px">{{sub.nombre}} </h2>
-                  <p style="margin: 0px" ng-if="sub.direccion[0]">{{sub.direccion[0].direccion}}</p>
-                  <p style="margin: 0px" ng-if="!sub.direccion[0]">{{act.direccion[0].direccion}}</p>
-                  <p></p>
-                  <i ng-if="sub.direccion[0]" class="icon ion-ios-location" style="font-size:  20px;color: #ff9c3e;" ng-click="comollegar( )"></i>
-                </a>
-            </div>
-   
-              
-          </div>
-          <div class="item tabs tabs-secondary ">
-              <a class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5">
-                  {{act.aforo}} Aforo
-              </a>
-              <a class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5">
-                  Duración {{act.horas}}h 
-              </a>
-              <a ng-if="act.direccion[0]" class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5" ng-click="comollegar()">
-                  ¿Como llegar?
-              </a>
-          </div>
-      </div>
-    </div>
-    
-    <!--Participante-->
-    <div ng-if="tipoUser==2">
-      <!--actividades-->
-      <h4 class="border-top" style="padding-left: 2%;font-size: medium;">
-      <i class="icon ion-android-remove"></i>
-      Actividades pensadas para los Participantes:</h4>
-
-      <div class="list card stable-bg" ng-repeat="act in actividades " >
-          <div class="item item-avatar item-icon-right">
-              <img src="img/material4.jpg">
-              <h2 style="padding-bottom: 2%;color: #116262;" >{{act.nombre}}</h2>
-              <p>{{act.empresaTipo}}</p>
-              <p>{{act.modalidadD}}</p>
-              <p ng-if="act.direccion[0] && !act.sub[0]">{{act.direccion[0].direccion}}</p>
-              <i ng-if="act.sub[0]" class="icon ion-ios-arrow-down" ng-click="verSubAct($index)" ></i>
-          </div>
-          <div class="item item-body " style="padding-top: 0" ng-show="act.detalle == 1">
-            <h4>Otras actividades a realizar:</h4>
-            <div class="list" >
-                <a class="item  item-icon-right" ng-repeat="sub in act.sub " style="padding-top: 1; padding-bottom: 0;border-bottom: solid 1px #ccc;">
-                  <h2 style="margin: 0px">{{sub.nombre}} </h2>
-                  <p style="margin: 0px" ng-if="sub.direccion[0]">{{sub.direccion[0].direccion}}</p>
-                  <p style="margin: 0px" ng-if="!sub.direccion[0]">{{act.direccion[0].direccion}}</p>
-                  <p></p>
-                  <i ng-if="sub.direccion[0]" class="icon ion-ios-location" style="font-size:  20px;color: #ff9c3e;" ng-click="comollegar( )"></i>
-                </a>
-            </div>
-   
-              
-          </div>
-          <div class="item tabs tabs-secondary ">
-              <a class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5">
-                  {{act.aforo}} Aforo
-              </a>
-              <a class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5">
-                  Duración {{act.horas}}h 
-              </a>
-              <a ng-if="act.direccion[0]" class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5" ng-click="comollegar()">
-                  ¿Como llegar?
-              </a>
-          </div>
-      </div>
-    </div>
 
     </ion-content>
-    <div class="bar bar-footer" style="background-color: #ff9c3e;color: white;">
-        <div class="title">Cambiar Usuario</div>
-        <div class="buttons buttons-right">
-            <button class="button button-energized-900 button-fab" ng-click="actionSheet()">
-                <i class="icon icon ion-person light"></i>
-            </button>
-        </div>
-    </div>
     
 </ion-view>
