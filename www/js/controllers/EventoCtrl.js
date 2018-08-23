@@ -1,7 +1,7 @@
 app.controller('EventoCtrl', function($state, $scope,$ionicLoading, $rootScope, $http, $ionicLoading, $ionicScrollDelegate , ionicMaterialMotion){
     
     $scope.x = 1;
-    $scope.path = 'http://192.168.100.238/ideconNuevo/public/';
+    $scope.path = 'http://www.orangevalue.com.co/idecon/public/';
     
   $scope.$on("$ionicView.beforeEnter", function(event, data){
 	      $ionicLoading.show({
