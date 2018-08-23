@@ -211,6 +211,7 @@
         }).success(function (response) {
           $scope.actividades = response.actividad;
           $scope.totales = response.totales;
+          console.log($scope.totales);          
           $scope.totales.palco = $scope.numberFormat($scope.totales.palco.toString());
           $scope.totales.calle = $scope.numberFormat($scope.totales.calle.toString());
           $scope.totalModalidad = response.modalidad;

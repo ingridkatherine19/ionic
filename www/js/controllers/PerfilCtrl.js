@@ -8,8 +8,8 @@ app.controller('PerfilCtrl', function ($scope, $stateParams, $ionicActionSheet, 
       $ionicLoading.show({
           template: '<div class="loader"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>'
       });
-      console.log();
-
+      
+        console.log($rootScope.user);
        if ($rootScope.user.tipo == 1) {// empresa
          $scope.perfilEmpresa();
          $scope.titulo = 'Empresa';
@@ -24,7 +24,7 @@ app.controller('PerfilCtrl', function ($scope, $stateParams, $ionicActionSheet, 
              $scope.titulo = 'Participante';
              $scope.perfilParticipante(); 
             }else{
-            //  $scope.resportePublico();
+
             }
             
           }
@@ -56,7 +56,6 @@ app.controller('PerfilCtrl', function ($scope, $stateParams, $ionicActionSheet, 
           }
       }).success(function (response) {
         $scope.empresa = response.empresa;
-        console.log($scope.empresa);
         $ionicLoading.hide();
       });
     }
@@ -72,7 +71,6 @@ app.controller('PerfilCtrl', function ($scope, $stateParams, $ionicActionSheet, 
           }
       }).success(function (response) {
         $scope.agrupacion = response.agrupacion;
-        console.log($scope.agrupacion);
         $ionicLoading.hide();
       });
     }
@@ -88,7 +86,6 @@ app.controller('PerfilCtrl', function ($scope, $stateParams, $ionicActionSheet, 
           }
       }).success(function (response) {
         $scope.participante = response.participante;
-        console.log($scope.participante);
         $ionicLoading.hide();
       });
     }

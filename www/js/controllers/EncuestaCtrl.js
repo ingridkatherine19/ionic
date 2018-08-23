@@ -1,4 +1,36 @@
 app.controller('EncuestaCtrl', function($state, $scope,$ionicLoading, $rootScope, $http, $ionicLoading, $ionicScrollDelegate , ionicMaterialMotion , ionicMaterialInk , $ionicPopup){
+   console.log($rootScope.eventoDetalle);
+
+     $scope.$on("$ionicView.beforeEnter", function(event, data){
+        $ionicLoading.show({
+            template: '<div class="loader"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>'
+        });
+
+        if (!$rootScope.eventoDetalle) {
+          $ionicLoading.hide();
+          $state.go('app.Culminados');
+        }else{
+          //consultas
+          $scope.buscarEncuesta();
+        }
+    });
+    $scope.buscarEncuesta = function(){
+        $http({
+            url: path + 'buscar/encuesta',
+            method: 'get',
+            params:{
+              idEvento: $rootScope.eventoDetalle.idEvento
+            },
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).success(function (response) {
+          $scope.preguntas = response.preguntas;
+          console.log($scope.preguntas);
+          $ionicLoading.hide();
+        });
+    }
+  
    $scope.respuesta = [
         {
             id:0,

@@ -1,7 +1,7 @@
 ﻿
 <ion-view view-title="Encuesta">
     <ion-content class="has-header CoColor" >
-      <div class="list">
+   <!--<div class="list">
         <label class="item item-input item-select">
           <div class="input-label">
             Tipo de encuestado:
@@ -11,13 +11,13 @@
             <option value="0" selected>Visitante</option>
           </select>
         </label>
-      </div>
-      <p style="text-align: left;padding-left: 3%;padding-right: 3%;"><b class="">Estimado Participante: </b></p>
+      </div>-->
+    <!--  <p style="text-align: left;padding-left: 3%;padding-right: 3%;"><b class="">Estimado Participante: </b></p>
       <p style="text-align: left;padding-left: 3%;padding-right: 3%;" class="">Su opinión y sugerencias son importantes para nosotros, ya que nos permiten conocer su grado de satisfacción, sus necesidades y expectativas con respecto a los eventos de Ruedas de Negocios y/o Financiera y  Feria o Muestra Empresarial por lo que pedimos sea tan amable de contestar cuidadosamente y objetivamente las siguientes preguntas, utilizando la escala mostrada:<br>
 
       EXCELENTE  5  -      BUENO 4     -    REGULAR 3 –     MALO 2     –     PESIMO 1     –      NO APLICA
-      </p>
-      <ul class="list">
+      </p>-->
+    <!--  <ul class="list">
           <li class="item">
             <p style="color: #659999">Las Actividad del evento te parecieron: </p><br>
             <div class="row pregunta1">
@@ -108,14 +108,13 @@
               <div class="col bordeRight" ng-click="data(6,6)">N/A</div>
             </div>  
           </li>
-      </ul>
-      <div class="list">
-
+      </ul>-->
+      <div class="list" ng-repeat="pregunta in preguntas">
         <label class="item item-input item-select">
           <div class="input-label">
-            A través de que medio se enteró del evento:
+            {{pregunta.pregunta}}
           </div>
-          <select ng-change="data(7,medio)" ng-model="medio" style="max-width: 20%;">
+          <select ng-change="data(7,medio)" ng-model="respuesta" style="max-width: 20%;">
             <option value="0">Radio</option>
             <option value="1" selected>Televisión</option>
             <option value="2">Correo Electrónico</option>
@@ -123,10 +122,8 @@
             <option value="4">Página Web</option>
           </select>
         </label>
-
       </div>
-      <div class="list">
-
+    <!--<div class="list">
         <label class="item item-input item-select">
           <div class="input-label">
             ¿Le gustaría que se realizara otro evento empresarial como el desarrollado?  
@@ -136,11 +133,8 @@
             <option value="0" selected>No</option>
           </select>
         </label>
-        
-
-      </div>
+      </div>-->
       <div class="list" ng-if="evento==1">
-        
         <label class="item item-input">
           <textarea id="comentario" ng-model="comentario" placeholder="Comments"></textarea>
         </label>

@@ -287,7 +287,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         views: {
             'menuContent': {
                 templateUrl: 'templates/encuesta.html',
-                controller: 'DetalleEventoFCtrl'
+                controller: 'EncuestaCtrl'
             }
         }
     })

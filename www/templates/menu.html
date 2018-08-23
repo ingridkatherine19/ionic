@@ -15,9 +15,9 @@
     </ion-side-menu-content>
     <ion-side-menu side="left">
         <ion-header-bar class="expanded">
-            <img src="img/logoIdecon.png" class="avatar motion spin fade">
-            <div class="menu-bottom" style="color:#474747">
-                Idecon
+            <img src="img/logo-sitena.jpg" class="avatar motion spin fade">
+            <div class="menu-bottom" style="color:#474747; padding-bottom: 3%">
+                    SITENA
             </div>
         </ion-header-bar>
         <ion-content class="stable-bg has-expanded-header">
@@ -47,7 +47,7 @@
                 <ion-item nav-clear menu-close href="#/app/culminados" >
                     Culminados
                 </ion-item>
-                <ion-item nav-clear menu-close href="#/app/perfil" ng-if="user != false">
+                <ion-item nav-clear menu-close href="#/app/perfil" ng-if="user != false && user.tipo != 5 && user.tipo != 4">
                     Perfil
                 </ion-item>
                 <ion-item nav-clear menu-close href="#/app/configuracion" ng-if="user != false">

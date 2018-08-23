@@ -47,7 +47,6 @@ app.controller('DetalleEventoFCtrl', function($state, $scope, $rootScope , $http
         }
     }).success(function (response) {
       $scope.totales = response.total;
-      console.log($scope.totales);
       $ionicLoading.hide();
     });
   }
